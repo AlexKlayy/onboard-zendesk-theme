@@ -15,3 +15,21 @@
   }
 </style>
 {{/if}}
+
+<script type="text/javascript">
+  if (!(HTMLScriptElement.supports && HTMLScriptElement.supports('importmap'))) {
+    document.write('<script async src="{{asset 'es-module-shims.js'}}"><\/script>');
+  }
+</script>
+<script type="importmap">
+{
+  "imports": {
+    "new-request-form": "{{asset 'new-request-form-bundle.js'}}",
+    "new-request-form-translations": "{{asset 'new-request-form-translations-bundle.js'}}",
+    "flash-notifications": "{{asset 'flash-notifications-bundle.js'}}",
+    "shared": "{{asset 'shared-bundle.js'}}",
+    "ticket-fields": "{{asset 'ticket-fields-bundle.js'}}",
+    "wysiwyg": "{{asset 'wysiwyg-bundle.js'}}"
+  }
+}
+</script>
