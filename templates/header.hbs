@@ -6,11 +6,14 @@
       {{/link}}
     </div>
 
-    {{#if signed_in}}
-      <div class="header-user">
+    <nav class="header-nav" aria-label="Primary">
+      {{link 'new_request' class='nav-link nav-link-cta'}}
+      {{#if signed_in}}
         <span class="user-info">{{user_name}}</span>
         {{link 'sign_out' class='nav-link'}}
-      </div>
-    {{/if}}
+      {{else}}
+        {{link 'sign_in' class='nav-link'}}
+      {{/if}}
+    </nav>
   </div>
 </header>

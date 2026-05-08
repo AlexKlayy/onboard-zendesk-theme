@@ -163,23 +163,43 @@ p {
   letter-spacing: -0.01em;
 }
 
-/* Nav links */
-.header nav a,
-.header .nav-link,
-.header a {
-  color: rgba(255, 255, 255, 0.8);
-  font-size: 0.875rem;
-  font-weight: 500;
-  padding: 8px 16px;
-  border-radius: var(--radius-sm);
-  transition: all var(--transition);
+/* Nav group */
+.header .header-nav {
+  display: flex;
+  align-items: center;
+  gap: 6px;
 }
 
-.header nav a:hover,
+/* Nav links */
+.header .nav-link,
+.header .header-nav a {
+  color: rgba(255, 255, 255, 0.85);
+  font-size: 0.875rem;
+  font-weight: 500;
+  padding: 8px 14px;
+  border-radius: var(--radius-sm);
+  transition: all var(--transition);
+  text-decoration: none;
+}
+
 .header .nav-link:hover,
-.header a:hover {
+.header .header-nav a:hover {
   color: #ffffff;
   background-color: var(--nav-dark-lighter);
+  text-decoration: none;
+}
+
+/* Submit-a-request pill */
+.header .nav-link-cta {
+  background-color: var(--accent);
+  color: #ffffff;
+  padding: 9px 18px;
+  border-radius: 999px;
+  font-weight: 600;
+}
+.header .nav-link-cta:hover {
+  background-color: var(--accent-hover);
+  color: #ffffff;
 }
 
 /* User menu */
