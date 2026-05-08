@@ -228,11 +228,13 @@ document.addEventListener('DOMContentLoaded', function () {
 
   // Editorial kicker labels for known sections (graceful fallback for new sections)
   var KICKERS = {
-    'Getting Started': 'Setup',
-    'Managing Your Posters': 'Posters',
-    'Breakroom Screens': 'Display',
-    'Email Signing': 'Sign-off',
-    'Widget': 'Embed'
+    'Onboarding: How To': 'How-to',
+    'Account': 'Account',
+    'Troubleshooting': 'Fix it',
+    'Document Management': 'Docs',
+    'Onboard Software': 'Software',
+    'Bureau Admins': 'Bureau',
+    'Getting Started': 'Setup'
   };
 
   var totalChapters = chapters.length;
@@ -339,5 +341,29 @@ document.addEventListener('DOMContentLoaded', function () {
     if (featuredRow) featuredRow.setAttribute('aria-expanded', 'true');
     loadSectionArticles(featured);
   }
+});
 
+// --- Category page: hydrate kicker labels for each section ---
+document.addEventListener('DOMContentLoaded', function () {
+  var catSections = document.querySelectorAll('.category-page .cat-section');
+  if (!catSections.length) return;
+
+  var KICKERS = {
+    'Onboarding: How To': 'How-to',
+    'Account': 'Account',
+    'Troubleshooting': 'Fix it',
+    'Document Management': 'Docs',
+    'Onboard Software': 'Software',
+    'Bureau Admins': 'Bureau',
+    'Getting Started': 'Setup'
+  };
+
+  catSections.forEach(function (section) {
+    var titleEl = section.querySelector('.cat-section-title');
+    var kickerEl = section.querySelector('.cat-section-kicker');
+    if (!titleEl || !kickerEl) return;
+    var name = (titleEl.textContent || '').trim();
+    var label = KICKERS[name];
+    if (label) kickerEl.textContent = label;
+  });
 });

@@ -1,33 +1,48 @@
-<main role="main">
-  <div class="container">
-    <nav aria-label="Breadcrumb">
-      <ol class="breadcrumbs">
-        <li><a href="{{help_center.url}}">Home</a></li>
-        <li>{{category.name}}</li>
-      </ol>
-    </nav>
+<main role="main" class="category-page">
+  <div class="category-page-shell">
+    <nav class="breadcrumb" aria-label="Breadcrumb">{{breadcrumbs}}</nav>
 
-    <h1>{{category.name}}</h1>
-    {{#if category.description}}
-      <p class="text-muted">{{category.description}}</p>
-    {{/if}}
+    <header class="category-head">
+      <p class="category-eyebrow">Help center</p>
+      <h1 class="category-title">{{category.name}}</h1>
+      {{#if category.description}}
+        <p class="category-summary">{{category.description}}</p>
+      {{/if}}
+    </header>
 
     {{#if sections}}
-      <ul class="section-list blocks-list">
+      <div class="category-sections">
         {{#each sections}}
-          <li class="blocks-item section-item">
-            <a href="{{url}}">
-              <h2 class="blocks-item-title section-title">{{name}}</h2>
+          <section class="cat-section" data-section-id="{{id}}">
+            <header class="cat-section-head">
+              <p class="cat-section-kicker"></p>
+              <h2 class="cat-section-title">{{name}}</h2>
               {{#if description}}
-                <p class="blocks-item-description section-description">{{description}}</p>
+                <p class="cat-section-desc">{{description}}</p>
               {{/if}}
-              <span class="blocks-item-count section-count">{{article_count}} articles</span>
-            </a>
-          </li>
+            </header>
+
+            {{#if articles}}
+              <ul class="cat-article-list">
+                {{#each articles}}
+                  <li class="cat-article">
+                    <a class="cat-article-link" href="{{url}}">
+                      <span class="cat-article-title">{{title}}</span>
+                      <svg class="cat-article-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                        <path d="M5 12h14M13 6l6 6-6 6"/>
+                      </svg>
+                    </a>
+                  </li>
+                {{/each}}
+              </ul>
+            {{else}}
+              <p class="cat-section-empty">No articles in this section yet.</p>
+            {{/if}}
+          </section>
         {{/each}}
-      </ul>
+      </div>
     {{else}}
-      <p class="text-muted">No sections in this category yet.</p>
+      <p class="category-empty">No sections in this category yet.</p>
     {{/if}}
   </div>
 </main>
