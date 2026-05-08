@@ -7,12 +7,12 @@
     </div>
 
     <nav class="header-nav" aria-label="Primary">
-      {{link 'new_request' class='nav-link nav-link-cta'}}
+      {{#link 'new_request' class='nav-link nav-link-cta'}}Submit a request{{/link}}
       {{#if signed_in}}
         <span class="user-info">{{user_name}}</span>
-        {{link 'sign_out' class='nav-link'}}
+        {{#link 'sign_out' class='nav-link'}}Sign out{{/link}}
       {{else}}
-        {{link 'sign_in' class='nav-link'}}
+        {{#link 'sign_in' class='nav-link'}}Sign in{{/link}}
       {{/if}}
     </nav>
   </div>
