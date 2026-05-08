@@ -2669,77 +2669,171 @@ html { scroll-padding-top: 96px; }
   box-shadow: 0 1px 3px rgba(20, 20, 19, 0.04);
 }
 
-/* Zendesk-rendered form elements */
-.request-page .form-field,
-.request-page .request-form .form-field {
-  margin-bottom: 22px;
-}
-.request-page label {
-  display: block;
-  font-size: 0.82rem;
-  font-weight: 600;
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
-  color: #374151;
-  margin-bottom: 8px;
-}
-.request-page input[type="text"],
-.request-page input[type="email"],
-.request-page input[type="url"],
-.request-page input[type="tel"],
-.request-page input[type="number"],
-.request-page input[type="search"],
-.request-page select,
-.request-page textarea {
-  width: 100%;
-  font-family: inherit;
-  font-size: 0.95rem;
-  color: #111827;
-  background: #fff;
-  border: 1px solid var(--rule);
-  border-radius: var(--radius, 8px);
-  padding: 12px 14px;
-  transition: border-color 0.18s ease, box-shadow 0.18s ease;
-}
-.request-page input:focus,
-.request-page select:focus,
-.request-page textarea:focus {
-  outline: none;
-  border-color: var(--accent);
-  box-shadow: 0 0 0 3px rgba(246, 103, 36, 0.12);
-}
-.request-page textarea { min-height: 160px; resize: vertical; }
-
-.request-page .description,
-.request-page .form-field .description {
-  font-size: 0.82rem;
-  color: #6b7280;
-  margin: 6px 0 10px;
+/* ----- Zendesk React form overrides ----- */
+.request-page .request-form-card * {
+  font-family: var(--font-sans, 'Poppins', sans-serif) !important;
 }
 
-.request-page input[type="submit"],
-.request-page button[type="submit"],
-.request-page .form-actions button {
-  background: var(--accent);
-  color: #fff;
-  font-family: inherit;
-  font-size: 0.9rem;
-  font-weight: 600;
+/* Required notice */
+.request-page .request-form-card > p:first-child,
+.request-page .request-form-card form > p:first-child {
+  font-size: 0.78rem;
   letter-spacing: 0.02em;
-  border: none;
-  border-radius: 999px;
-  padding: 12px 26px;
-  cursor: pointer;
-  transition: background 0.18s ease, transform 0.06s ease;
+  color: #6b7280;
+  margin: 0 0 22px;
+  padding-bottom: 18px;
+  border-bottom: 1px solid rgba(17, 24, 39, 0.08);
 }
-.request-page input[type="submit"]:hover,
-.request-page button[type="submit"]:hover,
-.request-page .form-actions button:hover {
-  background: var(--accent-hover, #E55A1D);
+
+/* Field labels */
+.request-page .request-form-card label,
+.request-page .request-form-card legend {
+  display: block !important;
+  font-size: 0.72rem !important;
+  font-weight: 600 !important;
+  letter-spacing: 0.18em !important;
+  text-transform: uppercase !important;
+  color: #1f2937 !important;
+  margin-bottom: 10px !important;
 }
-.request-page input[type="submit"]:active,
-.request-page button[type="submit"]:active {
-  transform: translateY(1px);
+
+/* Field groups: spacing between rows */
+.request-page .request-form-card > * + * { margin-top: 22px; }
+.request-page form > * + * { margin-top: 22px; }
+
+/* All text-style inputs and selects — force a visible border */
+.request-page .request-form-card input[type="text"],
+.request-page .request-form-card input[type="email"],
+.request-page .request-form-card input[type="url"],
+.request-page .request-form-card input[type="tel"],
+.request-page .request-form-card input[type="number"],
+.request-page .request-form-card input[type="search"],
+.request-page .request-form-card input:not([type]),
+.request-page .request-form-card select,
+.request-page .request-form-card textarea,
+.request-page .request-form-card [class*="StyledInput"],
+.request-page .request-form-card [class*="StyledTextarea"],
+.request-page .request-form-card [class*="StyledSelect"] {
+  width: 100% !important;
+  font-family: var(--font-sans, 'Poppins', sans-serif) !important;
+  font-size: 0.95rem !important;
+  color: #111827 !important;
+  background: #fff !important;
+  border: 1px solid rgba(17, 24, 39, 0.22) !important;
+  border-radius: var(--radius, 8px) !important;
+  padding: 12px 14px !important;
+  box-shadow: none !important;
+  transition: border-color 0.18s ease, box-shadow 0.18s ease !important;
+  box-sizing: border-box !important;
+}
+.request-page .request-form-card input:hover,
+.request-page .request-form-card select:hover,
+.request-page .request-form-card textarea:hover {
+  border-color: rgba(17, 24, 39, 0.40) !important;
+}
+.request-page .request-form-card input:focus,
+.request-page .request-form-card select:focus,
+.request-page .request-form-card textarea:focus,
+.request-page .request-form-card [class*="StyledInput"]:focus,
+.request-page .request-form-card [class*="StyledTextarea"]:focus,
+.request-page .request-form-card [class*="StyledSelect"]:focus {
+  outline: none !important;
+  border-color: var(--accent, #F66724) !important;
+  box-shadow: 0 0 0 3px rgba(246, 103, 36, 0.14) !important;
+}
+
+/* Description helper text */
+.request-page .request-form-card [id*="description"],
+.request-page .request-form-card [class*="Description"],
+.request-page .request-form-card .form-field-description {
+  font-size: 0.85rem !important;
+  color: #6b7280 !important;
+  margin: 6px 0 10px !important;
+  line-height: 1.5 !important;
+}
+
+/* WYSIWYG editor body */
+.request-page .request-form-card [class*="ProseMirror"],
+.request-page .request-form-card .ProseMirror {
+  min-height: 180px !important;
+  font-size: 0.95rem !important;
+  color: #111827 !important;
+  padding: 14px 16px !important;
+}
+.request-page .request-form-card [class*="EditorContainer"],
+.request-page .request-form-card [class*="EditorWrapper"] {
+  border: 1px solid rgba(17, 24, 39, 0.22) !important;
+  border-radius: var(--radius, 8px) !important;
+  background: #fff !important;
+}
+.request-page .request-form-card [class*="MenuBar"],
+.request-page .request-form-card [class*="Toolbar"] {
+  border-bottom: 1px solid rgba(17, 24, 39, 0.10) !important;
+  background: #fafaf7 !important;
+}
+
+/* Attachments dropzone */
+.request-page .request-form-card [class*="Dropzone"],
+.request-page .request-form-card [class*="dropzone"] {
+  border: 1.5px dashed rgba(17, 24, 39, 0.20) !important;
+  border-radius: var(--radius, 8px) !important;
+  background: #fafaf7 !important;
+  padding: 28px 20px !important;
+  color: #6b7280 !important;
+  font-size: 0.9rem !important;
+  transition: border-color 0.18s ease, background 0.18s ease !important;
+}
+.request-page .request-form-card [class*="Dropzone"]:hover,
+.request-page .request-form-card [class*="dropzone"]:hover {
+  border-color: var(--accent, #F66724) !important;
+  background: rgba(246, 103, 36, 0.04) !important;
+}
+
+/* Required asterisk */
+.request-page .request-form-card abbr[title="required"],
+.request-page .request-form-card [class*="Required"] {
+  color: var(--accent, #F66724) !important;
+  text-decoration: none !important;
+  margin-left: 2px;
+}
+
+/* Submit button — pill, accent color */
+.request-page .request-form-card button[type="submit"],
+.request-page .request-form-card input[type="submit"],
+.request-page .request-form-card [class*="StyledButton"][type="submit"] {
+  background: var(--accent, #F66724) !important;
+  color: #ffffff !important;
+  font-family: var(--font-sans, 'Poppins', sans-serif) !important;
+  font-size: 0.92rem !important;
+  font-weight: 600 !important;
+  letter-spacing: 0.02em !important;
+  border: none !important;
+  border-radius: 999px !important;
+  padding: 12px 32px !important;
+  cursor: pointer !important;
+  margin-top: 8px !important;
+  transition: background 0.18s ease, transform 0.06s ease !important;
+  box-shadow: 0 1px 2px rgba(246, 103, 36, 0.20) !important;
+}
+.request-page .request-form-card button[type="submit"]:hover,
+.request-page .request-form-card input[type="submit"]:hover {
+  background: var(--accent-hover, #E55A1D) !important;
+}
+.request-page .request-form-card button[type="submit"]:active,
+.request-page .request-form-card input[type="submit"]:active {
+  transform: translateY(1px) !important;
+}
+
+/* Secondary buttons (cancel, etc.) */
+.request-page .request-form-card button:not([type="submit"]) {
+  background: transparent !important;
+  color: #4b5563 !important;
+  border: 1px solid rgba(17, 24, 39, 0.18) !important;
+  border-radius: 999px !important;
+  padding: 10px 22px !important;
+  font-weight: 500 !important;
+  font-size: 0.9rem !important;
+  cursor: pointer !important;
 }
 
 @media (max-width: 640px) {
