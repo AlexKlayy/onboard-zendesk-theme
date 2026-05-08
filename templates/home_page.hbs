@@ -1,0 +1,61 @@
+<main role="main" class="home-page">
+
+  <section class="hero">
+    <p class="eyebrow">Help &amp; Documentation</p>
+    <h1 class="hero-title">How can <em>we</em> help<span class="stop">?</span></h1>
+    <p class="hero-sub">A guide to setting up your account, onboarding your team, and getting the most out of Onboard.</p>
+
+    <form class="search-shell" method="get" action="search" aria-label="Search the help center">
+      <svg class="search-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/>
+      </svg>
+      <input type="search" name="query" placeholder="Search articles, features, settings…" autocomplete="off" />
+      <span class="search-kbd" aria-hidden="true"><kbd>⌘</kbd><kbd>K</kbd></span>
+    </form>
+  </section>
+
+  {{#if categories}}
+    <section class="handbook">
+      <div class="handbook-head">
+        <h2>Browse the <em>handbook</em></h2>
+      </div>
+
+      <ul class="chapter-list">
+        {{#each categories}}
+          {{#each sections}}
+            <li class="chapter {{#is name 'Getting Started'}}chapter--featured{{/is}}" data-section-id="{{id}}" data-section-name="{{name}}">
+              <button type="button" class="chapter-row" aria-expanded="false" aria-controls="panel-{{id}}">
+                <span class="chapter-num"></span>
+                <div class="chapter-body">
+                  <p class="chapter-kicker"></p>
+                  <h3 class="chapter-title">{{name}}</h3>
+                  {{#if description}}
+                    <p class="chapter-desc">{{description}}</p>
+                  {{/if}}
+                  <div class="chapter-tags">
+                    <span class="chapter-count">Articles</span>
+                  </div>
+                </div>
+                <span class="chapter-arrow" aria-hidden="true">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+                </span>
+              </button>
+              <div class="chapter-panel" id="panel-{{id}}">
+                <ul class="chapter-articles" data-section-articles="{{id}}" data-loaded="false">
+                  <li class="chapter-articles-loading">Loading articles…</li>
+                </ul>
+                <a class="chapter-view-all" href="{{url}}">View all articles &rarr;</a>
+              </div>
+            </li>
+          {{/each}}
+        {{/each}}
+      </ul>
+    </section>
+  {{else}}
+    <section class="handbook">
+      <p class="empty-state">No content yet. Check back soon.</p>
+    </section>
+  {{/if}}
+
+
+</main>

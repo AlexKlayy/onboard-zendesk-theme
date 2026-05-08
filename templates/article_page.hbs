@@ -1,0 +1,93 @@
+<main role="main" class="article-page">
+  <div class="reading-progress" aria-hidden="true"><i class="rp-bar"></i></div>
+
+  <div class="article-shell">
+
+    <aside class="left-rail">
+      {{#if section}}
+        <a class="back-link" href="{{section.url}}">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M11 18l-6-6 6-6"/></svg>
+          <span>Back to {{section.name}}</span>
+        </a>
+        <div class="rail-section" data-section-name="{{section.name}}">
+          <p class="rail-label"><span class="rail-kicker"></span>{{section.name}}</p>
+          <ul>
+            {{#each section.articles}}
+              <li><a class="rail-link {{#is id ../article.id}}is-active{{/is}}" href="{{url}}">{{title}}</a></li>
+            {{/each}}
+          </ul>
+        </div>
+      {{/if}}
+    </aside>
+
+    <article class="article" itemscope itemtype="http://schema.org/Article">
+      <nav class="breadcrumb" aria-label="Breadcrumb">{{breadcrumbs}}</nav>
+
+      <p class="article-eyebrow" data-section-name="{{#if section}}{{section.name}}{{/if}}">
+        <b class="article-eyebrow-kicker"></b>
+        <span class="article-eyebrow-position"></span>
+      </p>
+
+      <h1 class="article-title" itemprop="name">{{article.title}}</h1>
+
+      <div class="article-meta">
+        <dl><dt>Read</dt><dd class="article-meta-readtime"><b>—</b></dd></dl>
+        <dl><dt>Updated</dt><dd><time datetime="{{article.edited_at}}" itemprop="dateModified">{{date article.edited_at}}</time></dd></dl>
+        {{#if article.author}}
+          <dl><dt>By</dt><dd itemprop="author">{{article.author.name}}</dd></dl>
+        {{/if}}
+      </div>
+
+      <div class="article-body" itemprop="articleBody">
+        {{article.body}}
+      </div>
+
+      {{#if attachments}}
+        <div class="article-attachments">
+          <h4 class="attachments-label">Attachments</h4>
+          <ul>
+            {{#each attachments}}
+              <li><a href="{{url}}" target="_blank" rel="noopener">{{name}}</a></li>
+            {{/each}}
+          </ul>
+        </div>
+      {{/if}}
+
+      {{#with article}}
+        <div class="helpful" role="form">
+          <p>Was this article helpful?</p>
+          <div class="helpful-actions">
+            {{vote 'up' class='helpful-btn yes' selected_class='is-selected'}}
+            {{vote 'down' class='helpful-btn no' selected_class='is-selected'}}
+          </div>
+        </div>
+      {{/with}}
+
+      <nav class="pager" aria-label="Article pagination" data-pager hidden>
+        <a class="pager-link prev" href="#" hidden>
+          <p class="pager-label"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M11 18l-6-6 6-6"/></svg> Previous</p>
+          <p class="pager-title"></p>
+        </a>
+        <a class="pager-link next" href="#" hidden>
+          <p class="pager-label">Next <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></p>
+          <p class="pager-title"></p>
+        </a>
+      </nav>
+
+      <div class="stuck">
+        <div>
+          <h4>Still stuck?</h4>
+          <p>If this article didn't solve it, our team is on it.</p>
+        </div>
+        <a class="email" href="mailto:help@edoconboard.com">Email support</a>
+      </div>
+    </article>
+
+    <aside class="right-rail">
+      <nav class="toc" aria-label="On this page" hidden>
+        <p class="toc-label">On this page</p>
+        <ul class="toc-list"></ul>
+      </nav>
+    </aside>
+  </div>
+</main>

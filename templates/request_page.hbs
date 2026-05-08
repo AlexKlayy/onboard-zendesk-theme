@@ -1,0 +1,38 @@
+<main role="main">
+  <div class="container">
+    <nav aria-label="Breadcrumb">{{breadcrumbs}}</nav>
+
+    <div style="background: var(--bg-card); border: 0.5px solid var(--card-border); border-radius: var(--radius); padding: 32px; box-shadow: var(--card-shadow);">
+      <h1 style="margin-bottom: 8px;">{{request.subject}}</h1>
+      <div class="article-meta" style="margin-bottom: 24px;">
+        <span class="request-status request-status--{{request.status}}">{{request.status_name}}</span>
+        <span class="text-muted text-small">Opened {{date request.created_at}}</span>
+      </div>
+
+      <div class="request-comments">
+        {{#each comments}}
+          <div style="padding: 20px 0; border-bottom: 1px solid rgba(0,0,0,0.05);">
+            <div style="display: flex; justify-content: space-between; margin-bottom: 8px;">
+              <strong style="font-size: 0.875rem;">{{author.name}}</strong>
+              <span class="text-muted text-small">{{date created_at}}</span>
+            </div>
+            <div style="font-size: 0.9375rem; color: var(--text-secondary); line-height: 1.7;">
+              {{body}}
+            </div>
+          </div>
+        {{/each}}
+      </div>
+
+      {{pagination}}
+
+      <div style="margin-top: 24px; padding-top: 24px; border-top: 1px solid rgba(0,0,0,0.05);">
+        {{#form 'comment' class='comment-form'}}
+          {{wysiwyg 'body'}}
+          <div style="margin-top: 12px;">
+            {{input type='submit' class='btn-primary'}}
+          </div>
+        {{/form}}
+      </div>
+    </div>
+  </div>
+</main>

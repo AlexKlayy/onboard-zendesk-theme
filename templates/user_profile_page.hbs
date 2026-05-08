@@ -1,0 +1,13 @@
+<main role="main">
+  <div class="container">
+    <div style="background: var(--bg-card); border: 0.5px solid var(--card-border); border-radius: var(--radius); padding: 32px; box-shadow: var(--card-shadow);">
+      <h1>{{user.name}}</h1>
+      {{#if user.avatar_url}}
+        <img src="{{user.avatar_url}}" alt="{{user.name}}" style="width: 80px; height: 80px; border-radius: 50%; margin-bottom: 16px;">
+      {{/if}}
+      {{#if member_since}}
+        <p class="text-muted text-small">Member since {{date member_since format='medium'}}</p>
+      {{/if}}
+    </div>
+  </div>
+</main>

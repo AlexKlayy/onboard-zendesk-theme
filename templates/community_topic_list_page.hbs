@@ -1,0 +1,19 @@
+<main role="main">
+  <div class="container">
+    <h1>Community</h1>
+    {{#if topics}}
+      <ul class="article-list" style="background: var(--bg-card); border: 0.5px solid var(--card-border); border-radius: var(--radius); box-shadow: var(--card-shadow);">
+        {{#each topics}}
+          <li class="article-list-item">
+            <a href="{{url}}" class="article-list-link">{{name}}</a>
+            {{#if description}}
+              <p class="text-muted">{{description}}</p>
+            {{/if}}
+          </li>
+        {{/each}}
+      </ul>
+    {{else}}
+      <p class="text-muted">No topics yet.</p>
+    {{/if}}
+  </div>
+</main>

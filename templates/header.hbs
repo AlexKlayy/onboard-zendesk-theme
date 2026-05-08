@@ -1,0 +1,17 @@
+<header class="header" role="banner">
+  <div class="header-inner">
+    <div class="logo">
+      {{#link 'help_center' class='logo-link'}}
+        <span class="logo-wordmark">Onboard</span>
+        <span class="logo-by">by Edoc</span>
+      {{/link}}
+    </div>
+
+    {{#if signed_in}}
+      <div class="header-user">
+        <span class="user-info">{{user_name}}</span>
+        {{link 'sign_out' class='nav-link'}}
+      </div>
+    {{/if}}
+  </div>
+</header>

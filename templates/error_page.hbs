@@ -1,0 +1,20 @@
+<main role="main">
+  <div class="container">
+    <div class="error-page">
+      {{#is error 'not_found'}}
+        <h1>Page not found</h1>
+        <p>The page you're looking for doesn't exist or has been moved.</p>
+      {{/is}}
+      {{#is error 'unauthorized'}}
+        <h1>Sign in required</h1>
+        <p>Please sign in to view this page.</p>
+        {{link 'sign_in' class='btn-primary'}}
+      {{/is}}
+      {{#is error 'forbidden'}}
+        <h1>Not authorized</h1>
+        <p>You don't have permission to view this page.</p>
+      {{/is}}
+      {{#link 'help_center' class='btn-primary'}}Back to Help Center{{/link}}
+    </div>
+  </div>
+</main>

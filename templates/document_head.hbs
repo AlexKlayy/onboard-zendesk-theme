@@ -1,0 +1,17 @@
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<link rel="stylesheet" href="{{asset 'style.css'}}">
+
+{{#if settings.brand_color}}
+<style>
+  :root {
+    --brand: {{settings.brand_color}};
+    --brand-hover: {{settings.brand_color_hover}};
+    --accent: {{settings.accent_color}};
+    --nav-dark: {{settings.nav_bg_color}};
+    --text-primary: {{settings.text_color}};
+    --bg-page: {{settings.background_color}};
+  }
+</style>
+{{/if}}

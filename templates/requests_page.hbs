@@ -1,0 +1,45 @@
+<main role="main">
+  <div class="container">
+    <nav aria-label="Breadcrumb">
+      <ol class="breadcrumbs">
+        <li><a href="{{help_center.url}}">Home</a></li>
+        <li>My requests</li>
+      </ol>
+    </nav>
+
+    <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 24px;">
+      <h1 style="margin: 0;">My requests</h1>
+      <a href="{{help_center.url}}/hc/requests/new" class="btn-primary">New request</a>
+    </div>
+
+    {{#if requests}}
+      <table class="requests-table">
+        <thead>
+          <tr>
+            <th>Subject</th>
+            <th>ID</th>
+            <th>Created</th>
+            <th>Last activity</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          {{#each requests}}
+            <tr>
+              <td><a href="{{url}}" style="color: var(--text-primary); font-weight: 500;">{{subject}}</a></td>
+              <td class="text-muted">{{id}}</td>
+              <td class="text-muted text-small">{{date created_at}}</td>
+              <td class="text-muted text-small">{{date updated_at}}</td>
+              <td><span class="request-status request-status--{{status}}">{{status}}</span></td>
+            </tr>
+          {{/each}}
+        </tbody>
+      </table>
+    {{else}}
+      <div style="text-align: center; padding: 48px 0; background: var(--bg-card); border-radius: var(--radius); border: 0.5px solid var(--card-border);">
+        <p style="color: var(--text-secondary); margin-bottom: 16px;">You don't have any requests yet.</p>
+        <a href="{{help_center.url}}/hc/requests/new" class="btn-primary">Submit a request</a>
+      </div>
+    {{/if}}
+  </div>
+</main>

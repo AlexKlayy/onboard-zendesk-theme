@@ -1,0 +1,33 @@
+<main role="main">
+  <div class="container">
+    <nav aria-label="Breadcrumb">
+      <ol class="breadcrumbs">
+        <li><a href="{{help_center.url}}">Home</a></li>
+        <li>{{category.name}}</li>
+      </ol>
+    </nav>
+
+    <h1>{{category.name}}</h1>
+    {{#if category.description}}
+      <p class="text-muted">{{category.description}}</p>
+    {{/if}}
+
+    {{#if sections}}
+      <ul class="section-list blocks-list">
+        {{#each sections}}
+          <li class="blocks-item section-item">
+            <a href="{{url}}">
+              <h2 class="blocks-item-title section-title">{{name}}</h2>
+              {{#if description}}
+                <p class="blocks-item-description section-description">{{description}}</p>
+              {{/if}}
+              <span class="blocks-item-count section-count">{{article_count}} articles</span>
+            </a>
+          </li>
+        {{/each}}
+      </ul>
+    {{else}}
+      <p class="text-muted">No sections in this category yet.</p>
+    {{/if}}
+  </div>
+</main>

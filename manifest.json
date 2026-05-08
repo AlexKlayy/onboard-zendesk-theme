@@ -1,0 +1,92 @@
+{
+  "name": "Onboard Help Center",
+  "author": "Edoc Service",
+  "version": "1.0.0",
+  "api_version": 4,
+  "default_locale": "en-us",
+  "settings": [
+    {
+      "label": "branding_group_label",
+      "variables": [
+        {
+          "identifier": "logo",
+          "type": "file",
+          "description": "Header logo image",
+          "label": "Logo"
+        },
+        {
+          "identifier": "favicon",
+          "type": "file",
+          "description": "Browser tab favicon",
+          "label": "Favicon"
+        }
+      ]
+    },
+    {
+      "label": "colors_group_label",
+      "variables": [
+        {
+          "identifier": "brand_color",
+          "type": "color",
+          "description": "Primary brand color (navy)",
+          "label": "Brand color",
+          "value": "#133254"
+        },
+        {
+          "identifier": "brand_color_hover",
+          "type": "color",
+          "description": "Hover state for primary brand color",
+          "label": "Brand color hover",
+          "value": "#0f2847"
+        },
+        {
+          "identifier": "accent_color",
+          "type": "color",
+          "description": "Accent color used sparingly for CTAs and highlights",
+          "label": "Accent color",
+          "value": "#F66724"
+        },
+        {
+          "identifier": "nav_bg_color",
+          "type": "color",
+          "description": "Header and navigation background color",
+          "label": "Navigation background",
+          "value": "#133254"
+        },
+        {
+          "identifier": "text_color",
+          "type": "color",
+          "description": "Primary text color",
+          "label": "Text color",
+          "value": "#141413"
+        },
+        {
+          "identifier": "background_color",
+          "type": "color",
+          "description": "Page background color",
+          "label": "Background color",
+          "value": "#FAF9F5"
+        }
+      ]
+    },
+    {
+      "label": "homepage_group_label",
+      "variables": [
+        {
+          "identifier": "show_hero",
+          "type": "checkbox",
+          "description": "Show the hero banner on the home page",
+          "label": "Show hero banner",
+          "value": true
+        },
+        {
+          "identifier": "hero_title",
+          "type": "text",
+          "description": "Hero banner title",
+          "label": "Hero title",
+          "value": "How can we help?"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,26 @@
+<main role="main">
+  <div class="container">
+    <nav aria-label="Breadcrumb">
+      <ol class="breadcrumbs">
+        <li><a href="{{help_center.url}}">Home</a></li>
+        <li>My contributions</li>
+      </ol>
+    </nav>
+
+    <h1>My contributions</h1>
+
+    {{#if contributions}}
+      <ul class="article-list" style="background: var(--bg-card); border: 0.5px solid var(--card-border); border-radius: var(--radius); box-shadow: var(--card-shadow);">
+        {{#each contributions}}
+          <li class="article-list-item">
+            <a href="{{url}}" class="article-list-link">{{title}}</a>
+          </li>
+        {{/each}}
+      </ul>
+    {{else}}
+      <div style="text-align: center; padding: 48px 0; background: var(--bg-card); border-radius: var(--radius); border: 0.5px solid var(--card-border);">
+        <p class="text-muted">You haven't made any contributions yet.</p>
+      </div>
+    {{/if}}
+  </div>
+</main>

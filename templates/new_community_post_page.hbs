@@ -1,0 +1,27 @@
+<main role="main">
+  <div class="container">
+    <nav aria-label="Breadcrumb">{{breadcrumbs}}</nav>
+
+    <h1>New post</h1>
+
+    <div class="request-form" style="background: var(--bg-card); border: 0.5px solid var(--card-border); border-radius: var(--radius); padding: 32px; box-shadow: var(--card-shadow);">
+      {{#form 'post' class='new-community-post'}}
+        <div class="form-field">
+          {{label 'title'}}
+          {{input 'title'}}
+        </div>
+        <div class="form-field">
+          {{label 'details'}}
+          {{wysiwyg 'details'}}
+        </div>
+        <div class="form-field">
+          {{label 'topic'}}
+          {{select 'topic'}}
+        </div>
+        <div class="form-field">
+          {{input type='submit' class='btn-primary'}}
+        </div>
+      {{/form}}
+    </div>
+  </div>
+</main>
