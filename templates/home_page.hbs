@@ -15,47 +15,36 @@
   </section>
 
   {{#if categories}}
-    <section class="handbook">
-      <div class="handbook-head">
-        <h2>Browse the <em>handbook</em></h2>
+    <section class="hubs">
+      <div class="hubs-head">
+        <p class="hubs-eyebrow">Browse by audience</p>
+        <h2 class="hubs-title">Choose your <em>hub</em></h2>
       </div>
 
-      <ul class="chapter-list">
+      <div class="hub-grid">
         {{#each categories}}
-          {{#each sections}}
-            <li class="chapter {{#is name 'Getting Started'}}chapter--featured{{/is}}" data-section-id="{{id}}" data-section-name="{{name}}">
-              <button type="button" class="chapter-row" aria-expanded="false" aria-controls="panel-{{id}}">
-                <span class="chapter-num"></span>
-                <div class="chapter-body">
-                  <p class="chapter-kicker"></p>
-                  <h3 class="chapter-title">{{name}}</h3>
-                  {{#if description}}
-                    <p class="chapter-desc">{{description}}</p>
-                  {{/if}}
-                  <div class="chapter-tags">
-                    <span class="chapter-count">Articles</span>
-                  </div>
-                </div>
-                <span class="chapter-arrow" aria-hidden="true">
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          <a class="hub-card" href="{{url}}" data-category-name="{{name}}">
+            <div class="hub-card-body">
+              <p class="hub-card-kicker"></p>
+              <h3 class="hub-card-title">{{name}}</h3>
+              {{#if description}}
+                <p class="hub-card-desc">{{description}}</p>
+              {{/if}}
+              <p class="hub-card-meta">
+                <span>Browse articles</span>
+                <span class="hub-card-arrow" aria-hidden="true">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
                 </span>
-              </button>
-              <div class="chapter-panel" id="panel-{{id}}">
-                <ul class="chapter-articles" data-section-articles="{{id}}" data-loaded="false">
-                  <li class="chapter-articles-loading">Loading articles…</li>
-                </ul>
-                <a class="chapter-view-all" href="{{url}}">View all articles &rarr;</a>
-              </div>
-            </li>
-          {{/each}}
+              </p>
+            </div>
+          </a>
         {{/each}}
-      </ul>
+      </div>
     </section>
   {{else}}
-    <section class="handbook">
+    <section class="hubs">
       <p class="empty-state">No content yet. Check back soon.</p>
     </section>
   {{/if}}
-
 
 </main>

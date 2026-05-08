@@ -343,6 +343,25 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 });
 
+// --- Home page: hydrate kicker labels on the hub cards ---
+document.addEventListener('DOMContentLoaded', function () {
+  var hubCards = document.querySelectorAll('.home-page .hub-card');
+  if (!hubCards.length) return;
+
+  var HUB_KICKERS = {
+    'Worker Help': 'For workers',
+    'Admin Help': 'For admins',
+    'Bureau Help': 'For bureaus'
+  };
+
+  hubCards.forEach(function (card) {
+    var name = (card.getAttribute('data-category-name') || '').trim();
+    var kickerEl = card.querySelector('.hub-card-kicker');
+    var label = HUB_KICKERS[name];
+    if (kickerEl && label) kickerEl.textContent = label;
+  });
+});
+
 // --- Category page: hydrate kicker labels for each section ---
 document.addEventListener('DOMContentLoaded', function () {
   var catSections = document.querySelectorAll('.category-page .cat-section');

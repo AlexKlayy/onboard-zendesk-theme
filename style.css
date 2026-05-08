@@ -874,6 +874,155 @@ nav[aria-label="Breadcrumb"] a:hover {
   color: var(--text-muted);
 }
 
+/* ============================================================
+   HOME PAGE — HUB CARDS (two-up category gateway)
+   ============================================================ */
+.home-page .hubs {
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 0 32px 96px;
+}
+.home-page .hubs-head {
+  margin-bottom: 40px;
+}
+.home-page .hubs-eyebrow {
+  font-size: 0.7rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--accent);
+  font-weight: 600;
+  margin: 0 0 12px;
+}
+.home-page .hubs-title {
+  font-size: clamp(1.8rem, 3.4vw, 2.4rem);
+  font-weight: 300;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  margin: 0;
+  color: #111827;
+}
+.home-page .hubs-title em {
+  font-style: italic;
+  font-weight: 400;
+  color: var(--accent);
+}
+
+.home-page .hub-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+  gap: 24px;
+}
+.home-page .hub-card {
+  position: relative;
+  display: block;
+  background: #ffffff;
+  border: 1px solid rgba(17, 24, 39, 0.10);
+  border-radius: 18px;
+  padding: 40px 36px 32px;
+  text-decoration: none;
+  color: inherit;
+  overflow: hidden;
+  transition: border-color 0.22s ease, transform 0.22s ease, box-shadow 0.22s ease;
+  min-height: 260px;
+}
+.home-page .hub-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(246,103,36,0.07) 0%, rgba(246,103,36,0) 65%);
+  opacity: 0;
+  transition: opacity 0.22s ease;
+  pointer-events: none;
+}
+.home-page .hub-card::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 60px;
+  height: 3px;
+  background: var(--accent);
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform 0.28s cubic-bezier(.2,.7,.2,1);
+}
+.home-page .hub-card:hover {
+  border-color: rgba(246, 103, 36, 0.45);
+  transform: translateY(-3px);
+  box-shadow: 0 14px 38px rgba(20, 20, 19, 0.07);
+  color: inherit;
+}
+.home-page .hub-card:hover::before { opacity: 1; }
+.home-page .hub-card:hover::after { transform: scaleX(1); }
+
+.home-page .hub-card-body {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  min-height: 200px;
+}
+.home-page .hub-card-kicker {
+  font-size: 0.66rem;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--accent);
+  font-weight: 600;
+  margin: 0 0 14px;
+  min-height: 12px;
+}
+.home-page .hub-card-kicker:empty { display: none; }
+
+.home-page .hub-card-title {
+  font-size: clamp(1.5rem, 2.4vw, 1.85rem);
+  font-weight: 500;
+  letter-spacing: -0.02em;
+  line-height: 1.15;
+  margin: 0 0 14px;
+  color: #111827;
+}
+.home-page .hub-card-desc {
+  font-size: 0.96rem;
+  color: #6b7280;
+  line-height: 1.6;
+  margin: 0 0 24px;
+  max-width: 90%;
+  font-style: italic;
+}
+.home-page .hub-card-meta {
+  margin: auto 0 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 0.74rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: #9ca3af;
+  font-weight: 600;
+}
+.home-page .hub-card-arrow {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: rgba(17, 24, 39, 0.04);
+  color: #4b5563;
+  transition: background 0.22s ease, color 0.22s ease, transform 0.22s ease;
+}
+.home-page .hub-card:hover .hub-card-arrow {
+  background: var(--accent);
+  color: #ffffff;
+  transform: translateX(3px);
+}
+
+@media (max-width: 760px) {
+  .home-page .hubs { padding: 0 20px 72px; }
+  .home-page .hub-grid { grid-template-columns: 1fr; gap: 16px; }
+  .home-page .hub-card { padding: 32px 24px 24px; min-height: auto; }
+}
+
 /* Mobile */
 @media (max-width: 760px) {
   .home-page .hero { padding: 56px 20px 48px; }
@@ -2685,9 +2834,11 @@ html { scroll-padding-top: 96px; }
   border-bottom: 1px solid rgba(17, 24, 39, 0.08);
 }
 
-/* Field labels */
-.request-page .request-form-card label,
-.request-page .request-form-card legend {
+/* Field labels — top-level only, not the visually-hidden ones inside the editor */
+.request-page .request-form-card > form > label,
+.request-page .request-form-card > form > div > label,
+.request-page .request-form-card > form > fieldset > legend,
+.request-page .request-form-card > form > div > fieldset > legend {
   display: block !important;
   font-size: 0.72rem !important;
   font-weight: 600 !important;
@@ -2695,6 +2846,24 @@ html { scroll-padding-top: 96px; }
   text-transform: uppercase !important;
   color: #1f2937 !important;
   margin-bottom: 10px !important;
+}
+
+/* Visually hide the "Rich text editor" / aria-only labels inside the WYSIWYG */
+.request-page .request-form-card [class*="Editor"] label,
+.request-page .request-form-card [class*="wysiwyg"] label,
+.request-page .request-form-card [class*="MenuBar"] label,
+.request-page .request-form-card [class*="Toolbar"] label,
+.request-page .request-form-card [class*="ProseMirror"] label,
+.request-page .request-form-card [aria-hidden="true"] label {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  clip: rect(0, 0, 0, 0) !important;
+  white-space: nowrap !important;
+  border: 0 !important;
 }
 
 /* Field groups: spacing between rows */
